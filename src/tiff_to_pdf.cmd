@@ -4,7 +4,17 @@
 cd /d "%~dps0"
 powershell -ExecutionPolicy Unrestricted -File tiff_to_pdf.ps1
 
+set RET=%ERRORLEVEL% 
 echo.
-echo [x]ボタンでウィンドウを閉じるか、Enterキーを押すと終了します。
+
+IF %RET% equ -1 (
+    echo キャンセルしました。
+) ELSE IF %RET% equ 0 (
+    echo 処理が完了しました。
+) ELSE (
+    echo エラーが発生したため、処理を中断しました。
+)
+
 echo.
-pause
+echo [x]ボタンで閉じるか、Enterキーを押すと終了します。
+pause >nul
