@@ -1,33 +1,33 @@
-# Tiff¨PDF•ÏŠ·
+# Tiffâ†’PDFå¤‰æ›
 
-InfraView‚ÅTiff‚ðPDF‚É•ÏŠ·‚·‚éƒvƒƒZƒX‚ðŽ©“®‰»‚·‚éƒXƒNƒŠƒvƒgB
+InfraViewã§Tiffã‚’PDFã«å¤‰æ›ã™ã‚‹ãƒ—ãƒ­ã‚»ã‚¹ã‚’è‡ªå‹•åŒ–ã™ã‚‹ã‚¹ã‚¯ãƒªãƒ—ãƒˆã€‚
 
 ## Language
 
-- “ú–{Œê (‚±‚Ìƒy[ƒW)
+- æ—¥æœ¬èªž (ã“ã®ãƒšãƒ¼ã‚¸)
 - [English](https://github.com/signak/tiff_to_pdf/blob/master/readme.md)
 
 ## Installation
 
-1. [ƒ_ƒEƒ“ƒ[ƒh InfraView • Plugins](https://www.irfanview.com/64bit.htm)
-2. —¼•û‚ðƒCƒ“ƒXƒg[ƒ‹‚·‚é
-3. srcƒtƒHƒ‹ƒ_”z‰º‚Ìƒtƒ@ƒCƒ‹‚ð‰º‹L‚Ì‚æ‚¤‚É”z’u‚·‚éB
+1. [ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ InfraView ï¼† Plugins](https://www.irfanview.com/64bit.htm)
+2. ä¸¡æ–¹ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã™ã‚‹
+3. srcãƒ•ã‚©ãƒ«ãƒ€é…ä¸‹ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä¸‹è¨˜ã®ã‚ˆã†ã«é…ç½®ã™ã‚‹ã€‚
 
 ```
-?[”CˆÓ‚ÌƒtƒHƒ‹ƒ_]
- „° ?ja-JP
- „« „° ?show_result_msg.psd1
- „« „¯ ?tiff_to_pdf.psd1
- „° ?show_result_msg.ps1
- „° ?tiff_to_pdf.cmd
- „¯ ?tiff_to_pdf.ps1
+ðŸ“¦[ä»»æ„ã®ãƒ•ã‚©ãƒ«ãƒ€]
+ â”£ ðŸ“‚ja-JP
+ â”ƒ â”£ ðŸ“œshow_result_msg.psd1
+ â”ƒ â”— ðŸ“œtiff_to_pdf.psd1
+ â”£ ðŸ“œshow_result_msg.ps1
+ â”£ ðŸ“œtiff_to_pdf.cmd
+ â”— ðŸ“œtiff_to_pdf.ps1
 ```
 
 ### Additional information
 
-- ƒCƒ“ƒXƒg[ƒ‹ƒpƒX‚ð•ÏX‚µ‚½ê‡‚â32ƒrƒbƒg”Å‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚½ê‡‚ÍAtiff_to_pdf.ps1ƒtƒ@ƒCƒ‹‚ðŠJ‚«AIVIEW‚Ì’l‚ð•ÏX‚µ‚Ä‚­‚¾‚³‚¢B
-- tiff_to_pdf.cmdƒtƒ@ƒCƒ‹‚Ì–¼‘O‚ÍAD‚«‚È•¨‚É•ÏX‚µ‚Ä‚à\‚¢‚Ü‚¹‚ñB
+- ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ãƒ‘ã‚¹ã‚’å¤‰æ›´ã—ãŸå ´åˆã‚„32ãƒ“ãƒƒãƒˆç‰ˆã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ãŸå ´åˆã¯ã€tiff_to_pdf.ps1ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ãã€IVIEWã®å€¤ã‚’å¤‰æ›´ã—ã¦ãã ã•ã„ã€‚
+- tiff_to_pdf.cmdãƒ•ã‚¡ã‚¤ãƒ«ã®åå‰ã¯ã€å¥½ããªç‰©ã«å¤‰æ›´ã—ã¦ã‚‚æ§‹ã„ã¾ã›ã‚“ã€‚
 
 ## Usage
 
-tiff_to_pdf.cmd ‚ðƒ_ƒuƒ‹ƒNƒŠƒbƒN‚µ‚ÄŽÀs‚·‚éB
+tiff_to_pdf.cmd ã‚’ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã—ã¦å®Ÿè¡Œã™ã‚‹ã€‚
