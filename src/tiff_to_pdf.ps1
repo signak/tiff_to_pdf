@@ -1,16 +1,36 @@
-# Script Version.
+# Set script version.
 Set-Variable -name SCR_VER -value "1.0.1" -option Constant
 
-#名前空間指定
-[void][System.Reflection.Assembly]::LoadWithPartialName("system.windows.forms")
+# Load assembly.
+Add-Type -Assembly System.Windows.Forms
 
-# InfraViewの実行ファイルパス設定
+# Set InfraView exe file path.
 Set-Variable -name IVIEW -value "C:\Program Files\IrfanView\i_view64.exe" -option Constant
 
-#フォルダ参照ダイアログ
-Function PickTargetFolder {
+$msgTable = Data {
+    #culture="en-US"
+    ConvertFrom-StringData -StringData @'
+    selectFolderDescription = Please select a folder. Folders under the selected folder will also be processed.
+    confirmDialogCaption = Execution Confirmation
+    confirmDialogMsg1 = Convert tif and tiff files in the following folders and their subfolders to pdf.
+    confirmDialogMsg2 = Are you sure you want to run it?
+    msgSearching = Searching in folders...
+    msgFoundItemCount = Tiff files
+    msgStartConvertion = Start conversion to PDF.
+    msgWayToInterupt =  interrupt the process, use the Ctrl + C keys or close the window with the [x] button.
+    msgConversion = converting
+'@
+}
+
+# Import localized messages.
+Import-LocalizedData -BindingVariable msgTable
+
+# ----------------------------------------
+# --- functions --------------------------
+# Show FolderBrowserDialog for select target folder.
+Function SelectTargetFolder {
     $dialog = New-Object System.Windows.Forms.FolderBrowserDialog
-    $dialog.Description = "フォルダを選択してください。選択したフォルダ配下のフォルダ内も処理の対象になります。"
+    $dialog.Description = $msgTable.selectFolderDescription
     $result = $dialog.ShowDialog()
 
     if ($result -ne [System.Windows.Forms.DialogResult]::OK) {
@@ -20,20 +40,30 @@ Function PickTargetFolder {
     return $dialog.SelectedPath
 }
 
+# Show dialog to confirm the continuation of conversion process.
 Function ConfirmConversion {
-    $caption = "実行確認"
-    $msg = -Join("下記フォルダ内、および配下のサブフォルダ内のtif,tiffファイルをpdfに変換します。`n", $targetFolderPath, "`n`n実行してもよろしいですか？")
-    
+    $caption = $msgTable.confirmDialogCaption
+    $msg = -Join (
+        $msgTable.confirmDialogMsg1,
+        "`n`n",
+        $targetFolderPath,
+        "`n`n",
+        $msgTable.confirmDialogMsg2
+    )
+
     $buttonsType = "OKCancel"
     $iconType = "Question"
     $result = [System.Windows.Forms.MessageBox]::Show($msg, $caption, $buttonsType, $iconType);
 
     return $result
 }
+# ----------------------------------------
 
+# ----------------------------------------
+# --- main -------------------------------
 Write-Output "`nTiff to PDF: Ver.$SCR_VER`n"
 
-$targetFolderPath = PickTargetFolder
+$targetFolderPath = SelectTargetFolder
 if ($targetFolderPath -eq "") {
     exit -1
 }
@@ -43,21 +73,22 @@ if ($confirm -ne [System.Windows.Forms.DialogResult]::OK) {
     exit -1
 }
 
-Write-Output "フォルダ内を検索しています..."
-$items = Get-ChildItem $targetFolderPath -File -Recurse -Include *.tif,*.tiff
+Write-Output $msgTable.msgSearching
+$items = Get-ChildItem $targetFolderPath -File -Recurse -Include *.tif, *.tiff
 $itemCount = $items.Count
 
-Write-Output "`nTiffファイルが $itemCount 個みつかりました。"
-Write-Output "PDFへの変換を開始します。`n"
-Write-Output "中断する場合は、Ctrlキー＋Cキーで処理を中断するか、[x]ボタンでウィンドウを閉じてください。`n"
+Write-Output "`n$($msgTable.msgFoundItemCount) : $($itemCount)"
+Write-Output "$($msgTable.msgStartConvertion)`n"
+Write-Output "$($msgTable.msgWayToInterupt)`n"
 
 foreach ($item in $items) {
     $srcName = $item.Name
     $srcPath = $item.FullName
     $dstPath = -Join ($item.Directory, '\', $item.BaseName, ".pdf")
 
-    Write-Output "変換中： $srcName"
-    Start-Process -FilePath $IVIEW -ArgumentList """$srcPath""","/convert","""$dstPath""" -Wait
+    Write-Output "$($msgTable.msgConversion) : $($srcName)"
+    Start-Process -FilePath $IVIEW -ArgumentList """$srcPath""", "/convert", """$dstPath""" -Wait
 }
 
 exit 0
+# ----------------------------------------
