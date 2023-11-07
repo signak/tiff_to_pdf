@@ -13,14 +13,15 @@ InfraViewでTiffをPDFに変換するプロセスを自動化するスクリプト。
 2. 両方をインストールする
 3. srcフォルダ配下のファイルを下記のように配置する。
 
-    ?[任意のフォルダ]
-     ┣ ?ja-JP
-     ┃ ┣ ?show_result_msg.psd1
-     ┃ ┗ ?tiff_to_pdf.psd1
-     ┣ ?show_result_msg.ps1
-     ┣ ?tiff_to_pdf.cmd
-     ┗ ?tiff_to_pdf.ps1
-
+```
+?[任意のフォルダ]
+ ┣ ?ja-JP
+ ┃ ┣ ?show_result_msg.psd1
+ ┃ ┗ ?tiff_to_pdf.psd1
+ ┣ ?show_result_msg.ps1
+ ┣ ?tiff_to_pdf.cmd
+ ┗ ?tiff_to_pdf.ps1
+```
 
 ### Additional information
 
